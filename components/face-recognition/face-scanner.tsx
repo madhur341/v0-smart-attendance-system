@@ -302,12 +302,50 @@ export function FaceScanner({
             )}
 
             {!result.verified && (
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>
-                  Verification failed. Please ensure good lighting and look directly at the camera.
-                </AlertDescription>
-              </Alert>
+              <div className="space-y-4">
+                <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    Verification failed. Please ensure good lighting and look directly at the camera.
+                  </AlertDescription>
+                </Alert>
+
+                {/* Detailed troubleshooting tips */}
+                <div className="p-4 border border-destructive/20 rounded-lg bg-destructive/5">
+                  <p className="text-sm font-medium text-destructive mb-2">Troubleshooting Tips:</p>
+                  <ul className="text-xs space-y-1 text-muted-foreground">
+                    <li>• Move to a well-lit area or turn on more lights</li>
+                    <li>• Remove glasses, hats, or face coverings if possible</li>
+                    <li>• Position your face directly in front of the camera</li>
+                    <li>• Keep your face steady and avoid excessive movement</li>
+                    <li>• Ensure the camera lens is clean and unobstructed</li>
+                  </ul>
+                </div>
+
+                {/* Quick retry button */}
+                <Button
+                  onClick={() => {
+                    setResult(null)
+                    setError(null)
+                    performVerification()
+                  }}
+                  variant="outline"
+                  className="w-full"
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Retrying...
+                    </>
+                  ) : (
+                    <>
+                      <Eye className="w-4 h-4 mr-2" />
+                      Try Again
+                    </>
+                  )}
+                </Button>
+              </div>
             )}
           </div>
         )}
