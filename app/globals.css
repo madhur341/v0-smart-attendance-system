@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  /* Completely redesigned theme with dark background and flowing gradients inspired by the design images */
+  --background: oklch(0.08 0.02 240); /* Very dark blue-black background */
+  --foreground: oklch(0.98 0.01 0); /* Pure white text */
+  --card: oklch(0.12 0.03 240); /* Dark card with slight blue tint */
+  --card-foreground: oklch(0.98 0.01 0);
+  --popover: oklch(0.12 0.03 240);
+  --popover-foreground: oklch(0.98 0.01 0);
+  --primary: oklch(0.7 0.25 280); /* Vibrant purple-blue */
+  --primary-foreground: oklch(0.98 0.01 0);
+  --secondary: oklch(0.15 0.05 260); /* Dark secondary */
+  --secondary-foreground: oklch(0.85 0.02 0);
+  --muted: oklch(0.18 0.04 250); /* Muted dark blue */
+  --muted-foreground: oklch(0.7 0.02 0);
+  --accent: oklch(0.75 0.2 320); /* Bright magenta accent */
+  --accent-foreground: oklch(0.98 0.01 0);
+  --destructive: oklch(0.65 0.25 15); /* Bright red-orange */
+  --destructive-foreground: oklch(0.98 0.01 0);
+  --border: oklch(0.25 0.05 260); /* Subtle border */
+  --input: oklch(0.15 0.04 250);
+  --ring: oklch(0.7 0.25 280);
+  --chart-1: oklch(0.7 0.25 280); /* Purple-blue */
+  --chart-2: oklch(0.75 0.2 160); /* Cyan-green */
+  --chart-3: oklch(0.75 0.2 320); /* Magenta */
+  --chart-4: oklch(0.8 0.18 60); /* Yellow-orange */
+  --chart-5: oklch(0.7 0.22 200); /* Blue */
+  --radius: 1rem;
+  --sidebar: oklch(0.1 0.03 240);
+  --sidebar-foreground: oklch(0.98 0.01 0);
+  --sidebar-primary: oklch(0.7 0.25 280);
+  --sidebar-primary-foreground: oklch(0.98 0.01 0);
+  --sidebar-accent: oklch(0.15 0.05 260);
+  --sidebar-accent-foreground: oklch(0.85 0.02 0);
+  --sidebar-border: oklch(0.25 0.05 260);
+  --sidebar-ring: oklch(0.7 0.25 280);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Added flowing gradient background inspired by design images */
+    background: radial-gradient(circle at 20% 80%, oklch(0.15 0.1 280) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, oklch(0.15 0.08 320) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, oklch(0.12 0.06 200) 0%, transparent 50%), oklch(0.08 0.02 240);
+  }
+
+  /* Added flowing gradient utilities inspired by the design images */
+  .gradient-flow {
+    background: linear-gradient(
+      135deg,
+      oklch(0.7 0.25 280) 0%,
+      oklch(0.75 0.2 320) 25%,
+      oklch(0.75 0.2 160) 50%,
+      oklch(0.8 0.18 60) 75%,
+      oklch(0.7 0.22 200) 100%
+    );
+  }
+
+  .gradient-flow-subtle {
+    background: linear-gradient(
+      135deg,
+      oklch(0.15 0.08 280) 0%,
+      oklch(0.15 0.06 320) 25%,
+      oklch(0.15 0.06 160) 50%,
+      oklch(0.15 0.05 60) 75%,
+      oklch(0.15 0.07 200) 100%
+    );
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, oklch(0.85 0.15 280) 0%, oklch(0.9 0.12 320) 50%, oklch(0.85 0.15 160) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(oklch(0.12 0.03 240), oklch(0.12 0.03 240)) padding-box,
+      linear-gradient(135deg, oklch(0.4 0.15 280), oklch(0.4 0.12 320), oklch(0.4 0.15 160)) border-box;
+  }
+
+  /* Updated vibrant utilities with iridescent colors */
+  .text-iridescent-purple {
+    color: oklch(0.7 0.25 280);
+  }
+  .text-iridescent-cyan {
+    color: oklch(0.75 0.2 160);
+  }
+  .text-iridescent-magenta {
+    color: oklch(0.75 0.2 320);
+  }
+  .text-iridescent-orange {
+    color: oklch(0.8 0.18 60);
+  }
+  .text-iridescent-blue {
+    color: oklch(0.7 0.22 200);
+  }
+
+  .bg-iridescent-purple {
+    background-color: oklch(0.7 0.25 280);
+  }
+  .bg-iridescent-cyan {
+    background-color: oklch(0.75 0.2 160);
+  }
+  .bg-iridescent-magenta {
+    background-color: oklch(0.75 0.2 320);
+  }
+  .bg-iridescent-orange {
+    background-color: oklch(0.8 0.18 60);
+  }
+  .bg-iridescent-blue {
+    background-color: oklch(0.7 0.22 200);
+  }
+
+  /* Added glass morphism effects */
+  .glass {
+    background: oklch(0.15 0.05 260 / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.3 0.08 280 / 0.3);
+  }
+
+  .glass-card {
+    background: oklch(0.12 0.04 250 / 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.25 0.06 280 / 0.2);
+  }
+
+  /* Added flowing animation keyframes */
+  @keyframes flow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-flow {
+    background-size: 200% 200%;
+    animation: flow 8s ease-in-out infinite;
+  }
+
+  /* Added glow effects */
+  .glow-purple {
+    box-shadow: 0 0 20px oklch(0.7 0.25 280 / 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(0.75 0.2 160 / 0.3);
+  }
+
+  .glow-magenta {
+    box-shadow: 0 0 20px oklch(0.75 0.2 320 / 0.3);
+  }
+}
